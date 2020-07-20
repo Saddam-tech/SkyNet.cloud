@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Block from "../../components/Blocks/Block";
 import styled from "styled-components";
+import Logos from '../../components/Logos';
+
 
 class Layout extends Component {
   render() {
@@ -12,12 +14,40 @@ class Layout extends Component {
         <Block />
         <Block />
         <Button>
-            <p style={{}}>sign in</p>
+          <P>sign in</P>
         </Button>
+        <NewP>or sign up with</NewP>
+        <Logos />
       </div>
     );
   }
 }
+
+const NewP = styled.div`
+  position: absolute;
+  width: 343px;
+  height: 59px;
+  left: 210px;
+  top: 659px;
+
+  font-family: Arsenal;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 38px;
+
+  color: #acacac;
+`;
+
+const P = styled.p`
+  font-family: Angkor;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 0px;
+
+  color: #939393;
+`;
 
 const Button = styled.button`
   position: absolute;
