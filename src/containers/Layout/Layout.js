@@ -5,15 +5,29 @@ import Logos from '../../components/Logos';
 
 
 class Layout extends Component {
+
+    componentDidMount() {
+      console.log(this.props);
+    }
+
+      pushHandler = () => {
+        this.props.history.push('/notes');
+      };
+
   render() {
     return (
       <div>
+        <img
+        style={{ position: "relative", width: "1800px", height: "900px" }}
+        src="./assets/background.png"
+        alt="new"
+      />
         <Header> Sign in </Header>
         <Header2> SkyNet </Header2>
         <Header3> Keep your notes safe </Header3>
         <Block />
         <Block />
-        <Button>
+        <Button onClick={this.pushHandler}>
           <P>sign in</P>
         </Button>
         <NewP>or sign up with</NewP>
@@ -23,7 +37,7 @@ class Layout extends Component {
   }
 }
 
-const NewP = styled.div`
+const NewP = styled.h1`
   position: absolute;
   width: 343px;
   height: 59px;
@@ -59,6 +73,9 @@ const Button = styled.button`
   background: #d5d5d5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
+  :hover {
+    background: #ffffff;
+  }
 `;
 
 const Header = styled.h1`
