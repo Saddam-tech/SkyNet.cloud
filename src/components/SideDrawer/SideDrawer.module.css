@@ -1,0 +1,18 @@
+.SideDrawer {
+  transition: transform 0.3s ease-out;
+  position: absolute;
+  width: 506px;
+  height: 1100px;
+  left: 0px;
+  top: 0px;
+
+  background: #397c9b;
+}
+
+.Open {
+  transform: translateX(0);
+}
+
+.Close {
+  transform: translateX(-100%);
+}

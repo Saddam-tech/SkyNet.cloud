@@ -1,42 +1,39 @@
 import React from "react";
+import classes from "./SideDrawer.module.css";
 import styled from "styled-components";
-import BackDrop from '../BackDrop/BackDrop';
-
+import { withRouter } from "react-router-dom";
+import BackDrop from "../BackDrop/BackDrop";
 
 const SideDrawer = (props) => {
-  let attachedStyles = [Drawer, Closed];
+  let attachedClasses = [classes.SideDrawer, classes.Close];
 
   if (props.openState) {
-    attachedStyles = [Drawer, Open];
+    attachedClasses = [classes.SideDrawer, classes.Open];
   }
 
   return (
-    <BackDrop show={props.openState} closing={props.closed}>
-      <div className={attachedStyles.join(' ')}></div>
-    </BackDrop>
+    (<BackDrop show={props.openState} closing={props.closed} />),
+    (
+      <div className={attachedClasses.join(" ")}>
+        <Img2
+          onClick={props.goBackButton}
+          src="./assets/keyboard_backspace-24px.svg"
+          alt="new"
+        />
+      </div>
+    )
   );
 };
 
-const Drawer = styled.div`
-  position: absolute;
-  width: 506px;
-  height: 900px;
-  left: 0px;
-  top: 0px;
-  z-index: 200;
-  padding: 32px 16px;
-  box-sizing: border-box;
-  transition: transform 0.3s ease-out;
+const Img2 = styled.img`
+position: absolute;
+width: 48px;
+height: 45px;
+left: 17px;
+top: 839px; 
 
-  background: #397c9b;
+:hover {
+background: #ffffff;
 `;
 
-const Closed = styled.div`
-  transform: translateX(-100%);
-`;
-
-const Open = styled.div`
-  transform: translateX(0);
-`;
-
-export default SideDrawer;
+export default withRouter(SideDrawer);

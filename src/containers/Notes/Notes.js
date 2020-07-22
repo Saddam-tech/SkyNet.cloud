@@ -6,7 +6,7 @@ import SideDrawer from '../../components/SideDrawer/SideDrawer';
 class Notes extends Component {
 
   state = {
-    showSideDrawer: false,
+    showSideDrawer: false
   };
 
   sideDrawerOpenHandler = () => {
@@ -45,9 +45,11 @@ class Notes extends Component {
 
         <Icons />
         <SideDrawer
+          goBackButton={this.goBackHandler}
           closed={this.sideDrawerCloseHandler}
           openState={this.state.showSideDrawer}
         />
+        
         <Button2 onClick={this.sideDrawerOpenHandler}>
           Toggle
         </Button2>
