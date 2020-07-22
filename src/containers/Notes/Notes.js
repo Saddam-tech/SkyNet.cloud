@@ -1,8 +1,26 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Icons from "../../components/icons/Icons";
+import SideDrawer from '../../components/SideDrawer/SideDrawer';
 
 class Notes extends Component {
+
+  state = {
+    showSideDrawer: false,
+  };
+
+  sideDrawerOpenHandler = () => {
+    this.setState((prevState) => {
+      return { showSideDrawer: !prevState.showSideDrawer };
+    });
+  };
+
+  sideDrawerCloseHandler = () => {
+    this.setState({ showSideDrawer: false });
+  };
+
+
+
   componentDidMount() {
     console.log(this.props);
   }
@@ -24,11 +42,28 @@ class Notes extends Component {
           <strong>Let`s type something!</strong>
         </H4>
 
+
         <Icons />
+        <SideDrawer
+          closed={this.sideDrawerCloseHandler}
+          openState={this.state.showSideDrawer}
+        />
+        <Button2 onClick={this.sideDrawerOpenHandler}>
+          Toggle
+        </Button2>
       </div>
     );
   }
 }
+
+const Button2 = styled.button`
+position: absolute;
+width: 64px;
+height: 52px;
+left: 521px;
+top: 15px;
+background: white;
+`;
 
 const Img2 = styled.img`
 position: absolute;

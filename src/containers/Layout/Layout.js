@@ -1,27 +1,28 @@
 import React, { Component } from "react";
 import Block from "../../components/Blocks/Block";
 import styled from "styled-components";
-import Logos from '../../components/Logos';
-
+import Logos from "../../components/Logos";
 
 class Layout extends Component {
+   
 
-    componentDidMount() {
-      console.log(this.props);
-    }
+  
+  componentDidMount() {
+    console.log(this.props);
+  }
 
-      pushHandler = () => {
-        this.props.history.push('/notes');
-      };
+  pushHandler = () => {
+    this.props.history.push("/notes");
+  };
 
   render() {
     return (
       <div>
         <img
-        style={{ position: "relative", width: "1800px", height: "900px" }}
-        src="./assets/background.png"
-        alt="new"
-      />
+          style={{ position: "relative", width: "1800px", height: "900px" }}
+          src="./assets/background.png"
+          alt="new"
+        />
         <Header> Sign in </Header>
         <Header2> SkyNet </Header2>
         <Header3> Keep your notes safe </Header3>
@@ -36,6 +37,7 @@ class Layout extends Component {
     );
   }
 }
+
 
 const NewP = styled.h1`
   position: absolute;
