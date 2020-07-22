@@ -3,6 +3,7 @@ import classes from "./SideDrawer.module.css";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import BackDrop from "../BackDrop/BackDrop";
+import Aux from "../../containers/hoc/Aux/Aux";
 
 const SideDrawer = (props) => {
   let attachedClasses = [classes.SideDrawer, classes.Close];
@@ -12,8 +13,9 @@ const SideDrawer = (props) => {
   }
 
   return (
-    (<BackDrop show={props.openState} closing={props.closed} />),
-    (
+    <Aux>
+      <BackDrop show={props.openState} closing={props.closed} />
+
       <div className={attachedClasses.join(" ")}>
         <Img2
           onClick={props.goBackButton}
@@ -21,7 +23,7 @@ const SideDrawer = (props) => {
           alt="new"
         />
       </div>
-    )
+    </Aux>
   );
 };
 
