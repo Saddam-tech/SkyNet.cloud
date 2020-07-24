@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Icons from "../../components/icons/Icons";
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
+import Burger from '../../components/Burger/Burger';
+
 
 class Notes extends Component {
 
   state = {
-    showSideDrawer: false
+    showSideDrawer: false,
   };
 
   sideDrawerOpenHandler = () => {
@@ -31,8 +33,7 @@ class Notes extends Component {
 
   render() {
     return (
-      <div>
-        <Img src="./assets/NotesBackground.jpg" alt="new" />
+      <div style={{backgroundColor: '#E5E5E5'}}>
         <Img2
           onClick={this.goBackHandler}
           src="./assets/keyboard_backspace-24px.svg"
@@ -44,28 +45,18 @@ class Notes extends Component {
 
 
         <Icons />
+        <Burger click={this.sideDrawerOpenHandler}/>
         <SideDrawer
           goBackButton={this.goBackHandler}
           closed={this.sideDrawerCloseHandler}
           openState={this.state.showSideDrawer}
-        />
-        
-        <Button2 onClick={this.sideDrawerOpenHandler}>
-          Toggle
-        </Button2>
+           />
+    
       </div>
     );
   }
 }
-
-const Button2 = styled.button`
-position: absolute;
-width: 64px;
-height: 52px;
-left: 521px;
-top: 15px;
-background: white;
-`;
+ 
 
 const Img2 = styled.img`
 position: absolute;
@@ -78,14 +69,7 @@ top: 839px;
 background: #ffffff;
 `;
 
-const Img = styled.img`
-  position: relative;
-  width: 1770px;
-  height: 1020px;
-  left: 0px;
-  top: 0px;
-  opacity: 50%;
-`;
+  
 
 const H4 = styled.div`
   position: absolute;

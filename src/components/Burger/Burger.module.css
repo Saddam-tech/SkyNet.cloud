@@ -1,0 +1,23 @@
+.Burger {
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    width: 60px;
+    height: 53px;
+    left: 21px;
+    top: 8px;
+    align-items: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.Burger div {
+    width: 90%;
+    height: 3px;
+    background-color: black;
+    padding: 1px;
+    margin: 1px;
+}
+
+ 
