@@ -6,9 +6,15 @@
   left: 0px;
   top: 0px;
 
-  background: #397c9b;
+  background:  #E8E8E8;
   z-index: 200;
   box-sizing: border-box;
+}
+@media (max-width: 500px) {
+   .SideDrawer{
+    width: 280px;
+    max-width: 70%;
+   }
 }
 
 .Open {

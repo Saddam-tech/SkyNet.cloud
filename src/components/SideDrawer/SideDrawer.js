@@ -41,6 +41,12 @@ const Input = styled.input`
   background: #faf4ff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
+  @media (max-width: 500px) {
+    width: 184px;
+    height: 36px;
+    left: 17px;
+    top: 25px;
+  }
   ::placeholder {
     text-align: center;
     position: absolute;
@@ -67,9 +73,17 @@ width: 48px;
 height: 45px;
 left: 17px;
 top: 839px; 
+@media (max-width: 500px) {
+  width: 31px;
+  height: 34px;
+  left: 21px;
+  top: 754px;
+}
+
 
 :hover {
 background: #ffffff;
+}
 `;
 
 export default SideDrawer;

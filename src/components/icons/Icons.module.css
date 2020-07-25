@@ -1,0 +1,20 @@
+.Main {
+  position: absolute;
+  width: 184px;
+  height: 61px;
+  left: 1256px;
+  top: 14px;
+  box-sizing: flex-box;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+ 
+
+@media (max-width: 500px) {
+  .Main {
+    width: 114px;
+    height: 44px;
+    left: 261px;
+  }
+}
