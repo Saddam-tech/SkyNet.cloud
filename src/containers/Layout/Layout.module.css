@@ -1,0 +1,14 @@
+.Image {
+  position: relative;
+  width: 1800px;
+  height: 900px;
+}
+
+@media (max-width: 500px) {
+  .Image {
+    width: 375px;
+    height: 812px;
+    left: 0;
+    top: 0;
+  }
+}

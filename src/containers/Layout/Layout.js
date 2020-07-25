@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Block from "../../components/Blocks/Block";
 import styled from "styled-components";
 import Logos from "../../components/Logos";
+import classes from './Layout.module.css';
 
 class Layout extends Component {
    
@@ -19,7 +20,7 @@ class Layout extends Component {
     return (
       <div>
         <img
-          style={{ position: "relative", width: "1800px", height: "900px" }}
+          className={classes.Image}
           src="./assets/background.png"
           alt="new"
         />
