@@ -9,9 +9,12 @@ function App() {
     <div className="App">
        
       <Switch>
+    
         <Route path="/notes" component={Notes} />
         <Route path="/" exact component={Layout} />
-      </Switch>
+    
+        <Redirect to="/" />
+    </Switch>
     </div>
   );
 }
