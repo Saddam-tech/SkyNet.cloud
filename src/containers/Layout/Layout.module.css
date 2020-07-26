@@ -1,5 +1,5 @@
 .Image {
-  height: 900px;
+  height: 100%;
   width: 100%;
   position: fixed;
   left: 0;
@@ -8,7 +8,7 @@
 
 @media (max-width: 500px) {
   .Image {
-    height: 812px;
+    height: auto;
     left: 0;
     top: 0;
   }
