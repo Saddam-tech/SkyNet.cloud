@@ -43,6 +43,12 @@ const Input1 = styled.input`
 
     color: #d8d8d8;
   }
+  @media (max-width: 500px) {
+    width: 259px;
+    height: 45px;
+    left: 55px;
+    top: 214px;
+  }
 `;
 
 const Input2 = styled.input`
@@ -77,6 +83,12 @@ const Input2 = styled.input`
     line-height: 55px;
 
     color: #d8d8d8;
+  }
+  @media (max-width: 500px) {
+    width: 259px;
+    height: 45px;
+    left: 55px;
+    top: 279px;
   }
 `;
 

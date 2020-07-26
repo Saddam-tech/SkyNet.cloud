@@ -1,0 +1,28 @@
+.Div {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 50px;
+  left: 297px;
+  top: 769px;
+}
+
+.Div img {
+  width: 70px;
+  margin: 10px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+@media (max-width: 500px) {
+  .Div {
+    position: absolute;
+    left: 9px;
+    top: 742px;
+  }
+
+  .Div img {
+    width: 37px;
+    height: 36px;
+  }
+}
