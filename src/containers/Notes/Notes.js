@@ -36,7 +36,7 @@ class Notes extends Component {
           alt="new"
         />
         <H4>
-          <strong>Let`s type something</strong>
+          <strong>Let`s type something!</strong>
         </H4>
 
         <Icons />
