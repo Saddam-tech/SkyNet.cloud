@@ -19,7 +19,7 @@ const Input1 = styled.input`
   font-family: Angkor;
   font-style: normal;
   font-weight: normal;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 55px;
   display: flex;
   align-items: center;
@@ -41,13 +41,16 @@ const Input1 = styled.input`
     font-family: Angkor;
     font-style: normal;
     font-weight: normal;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 55px;
 
     color: #d8d8d8;
   }
   @media (max-width: 500px) {
-    font-size: 25px;
+    .placeholder {
+      font-size: 20px;
+    }
+    font-size: 20px;
     width: 68%;
     height: 45px;
     left: 55px;
@@ -64,7 +67,7 @@ const Input2 = styled.input`
   font-family: Angkor;
   font-style: normal;
   font-weight: normal;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 55px;
   display: flex;
   align-items: center;
@@ -86,13 +89,16 @@ const Input2 = styled.input`
     font-family: Angkor;
     font-style: normal;
     font-weight: normal;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 55px;
 
     color: #d8d8d8;
   }
   @media (max-width: 500px) {
-    font-size: 25px;
+    .placeholder {
+      font-size: 20px;
+    }
+    font-size: 20px;
     width: 68%;
     height: 45px;
     left: 55px;
