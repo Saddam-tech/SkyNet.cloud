@@ -37,11 +37,11 @@ class Layout extends Component {
 }
 
 const NewP = styled.h3`
-  position: absolute;
+  position: fixed;
   width: 343px;
   height: 59px;
   left: 210px;
-  top: 630px;
+  top: 730px;
 
   font-family: Arsenal;
   font-style: normal;
@@ -52,9 +52,9 @@ const NewP = styled.h3`
   color: #acacac;
   @media (max-width: 500px) {
     width: 209px;
-    height: 37px;
+    height: 50%;
     left: 2px;
-    top: 690px;
+    top: 630px;
     font-size: 24px;
     line-height: 30px;
   }
@@ -106,7 +106,7 @@ const Button = styled.button`
 `;
 
 const Header = styled.h1`
-  position: absolute;
+  position: fixed;
   text-align: center;
   width: 100%;
   height: 100%;
@@ -130,7 +130,7 @@ const Header = styled.h1`
 `;
 
 const Header2 = styled.h1`
-  position: absolute;
+  position: fixed;
   width: 480px;
   height: 165px;
   left: 967px;

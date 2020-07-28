@@ -1,9 +1,9 @@
 .Div {
-  position: absolute;
+  position: fixed;
   display: flex;
   margin-left: 50px;
   left: 297px;
-  top: 769px;
+  top: 849px;
   height: 60px;
   width: 20%;
   height: 7%;
@@ -20,13 +20,10 @@
 
 @media (max-width: 500px) {
   .Div {
-    position: absolute;
-    left: 9px;
-    top: 742px;
-  }
-
-  .Div img {
     width: 50%;
-    height: 36px;
+    height: 10%;
+    left: 9px;
+    top: 692px;
   }
 }
+ 

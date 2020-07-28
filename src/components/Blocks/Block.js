@@ -11,7 +11,7 @@ const block = () => {
 };
 
 const Input1 = styled.input`
-  position: absolute;
+  position: fixed;
   width: 520px;
   height: 68px;
   left: 336px;
