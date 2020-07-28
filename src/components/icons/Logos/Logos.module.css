@@ -1,15 +1,19 @@
 .Div {
+  position: absolute;
   display: flex;
-  flex-wrap: nowrap;
   margin-left: 50px;
   left: 297px;
   top: 769px;
+  height: 60px;
+  width: 20%;
+  height: 7%;
 }
 
 .Div img {
-  width: 70px;
+  width: 100%;
   margin: 10px;
-  text-align: center;
+  box-sizing: border-box;
+  display: block;
   line-height: 50px;
   font-size: 20px;
 }
@@ -22,7 +26,7 @@
   }
 
   .Div img {
-    width: 37px;
+    width: 50%;
     height: 36px;
   }
 }

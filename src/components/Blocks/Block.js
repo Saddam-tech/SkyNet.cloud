@@ -21,6 +21,9 @@ const Input1 = styled.input`
   font-weight: normal;
   font-size: 30px;
   line-height: 55px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 
   color: #d8d8d8;
 
@@ -44,7 +47,8 @@ const Input1 = styled.input`
     color: #d8d8d8;
   }
   @media (max-width: 500px) {
-    width: 259px;
+    font-size: 25px;
+    width: 68%;
     height: 45px;
     left: 55px;
     top: 214px;
@@ -52,7 +56,7 @@ const Input1 = styled.input`
 `;
 
 const Input2 = styled.input`
-  position: absolute;
+  position: fixed;
   width: 520px;
   height: 68px;
   left: 336px;
@@ -62,6 +66,9 @@ const Input2 = styled.input`
   font-weight: normal;
   font-size: 30px;
   line-height: 55px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 
   color: #d8d8d8;
 
@@ -85,7 +92,8 @@ const Input2 = styled.input`
     color: #d8d8d8;
   }
   @media (max-width: 500px) {
-    width: 259px;
+    font-size: 25px;
+    width: 68%;
     height: 45px;
     left: 55px;
     top: 279px;

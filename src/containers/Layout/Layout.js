@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Block from "../../components/Blocks/Block";
 import styled from "styled-components";
-import Logos from "../../components/Logos/Logos";
+import Logos from "../../components/icons/Logos/Logos";
 import classes from "./Layout.module.css";
 
 class Layout extends Component {
@@ -53,41 +53,43 @@ const NewP = styled.h3`
   @media (max-width: 500px) {
     width: 209px;
     height: 37px;
-    left: 10px;
-    top: 682px;
+    left: 2px;
+    top: 690px;
     font-size: 24px;
     line-height: 30px;
   }
 `;
 
 const P = styled.p`
-  position: fixed;
-  font-family: Angkor;
   font-style: normal;
   font-weight: normal;
   font-size: 30px;
   line-height: 0px;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
 
   color: #939393;
 
   @media (max-width: 500px) {
-    width: 38px;
-    height: 22px;
     left: 166px;
-    top: 344px;
-    
-     
+    top: 250px;
+
     font-size: 12px;
     line-height: 22px;
   }
 `;
 
 const Button = styled.button`
-  position: absolute;
+  position: fixed;
+
   width: 160px;
   height: 65px;
   left: 509px;
   top: 400px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
 
   background: #d5d5d5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -96,7 +98,7 @@ const Button = styled.button`
     background: #ffffff;
   }
   @media (max-width: 500px) {
-    width: 80px;
+    width: 20%;
     height: 26px;
     left: 145px;
     top: 354px;
@@ -105,12 +107,11 @@ const Button = styled.button`
 
 const Header = styled.h1`
   position: absolute;
-  width: 226px;
-  height: 95px;
-  left: 468px;
-  top: -4px;
-
-  font-family: Angkor;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  left: -300px;
+  top: 30px;
   font-style: normal;
   font-weight: normal;
   font-size: 70px;
@@ -145,7 +146,7 @@ const Header2 = styled.h1`
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   @media (max-width: 500px) {
-    width: 227px;
+    width: 60%;
     height: 66px;
     left: 87px;
     top: 22px;
@@ -171,9 +172,9 @@ const Header3 = styled.h4`
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   @media (max-width: 500px) {
-    width: 394px;
+    width: 60%;
     height: 36px;
-    left: 9px;
+    left: 90px;
     top: 83px;
     font-size: 18px;
     line-height: 25px;
