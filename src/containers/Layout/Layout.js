@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import { browserHistory } from "react-router-dom";
+
 import Background from "../../assets/background.png";
 import GirlPicture from "../../assets/note-svg.svg";
 import Brand from "../../assets/our-logo.png";
@@ -9,19 +11,18 @@ import Facebook from "../../assets/facebook.png";
 import Google from "../../assets/google.png";
 import Twitter from "../../assets/twitter.png";
 
-const Layout = (props) => {
-  useEffect((props) => {
-    console.log(props);
-  });
+const Layout = () => {
+  // useEffect((props) => {
+  //   console.log(props);
+  // });
 
-  const loginHandler = (props) => {
-    props.history.push("/notes");
+  const loginHandler = () => {
+    // browserHistory.push("/notes");
   };
 
   return (
     <Container>
-      <img className="logo" src={Brand} />
-
+      <h2>SkyNetCloud</h2>
       <form onSubmit={loginHandler}>
         <label>Sign In</label>
         <input type="text" />
@@ -56,12 +57,13 @@ const Container = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  .logo {
+  h2 {
     position: absolute;
     top: 20px;
     left: 20px;
     width: 200px;
     height: auto;
+    color: white;
   }
 
   form {
