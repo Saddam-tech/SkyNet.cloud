@@ -1,184 +1,136 @@
-import React, { Component } from "react";
-import Block from "../../components/Blocks/Block";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import Logos from "../../components/icons/Logos/Logos";
-import classes from "./Layout.module.css";
+import Background from "../../assets/background.png";
+import GirlPicture from "../../assets/note-svg.svg";
+import Brand from "../../assets/our-logo.png";
 
-class Layout extends Component {
-  componentDidMount() {
-    console.log(this.props);
-  }
+import Instagram from "../../assets/instagram.png";
+import Facebook from "../../assets/facebook.png";
+import Google from "../../assets/google.png";
+import Twitter from "../../assets/twitter.png";
 
-  pushHandler = () => {
-    this.props.history.push("/notes");
+const Layout = (props) => {
+  useEffect((props) => {
+    console.log(props);
+  });
+
+  const loginHandler = (props) => {
+    props.history.push("/notes");
   };
 
-  render() {
-    return (
-      <div>
-        <img
-          className={classes.Image}
-          src="./assets/background.png"
-          alt="new"
-        />
-        <Header> Sign in </Header>
-        <Header2> SkyNet </Header2>
-        <Header3> Keep your notes safe </Header3>
-        <Block />
-        <Block />
-        <Button onClick={this.pushHandler}>
-          <P>sign in</P>
-        </Button>
-        <NewP>or sign up with</NewP>
-        <Logos />
+  return (
+    <Container>
+      <img className="logo" src={Brand} />
+
+      <form onSubmit={loginHandler}>
+        <label>Sign In</label>
+        <input type="text" />
+        <input type="text" />
+        <button type="submit">Sign In</button>
+
+        <div className="logos">
+          <img src={Facebook} />
+          <img src={Instagram} />
+          <img src={Google} />
+          <img src={Twitter} />
+        </div>
+      </form>
+
+      <div className="content">
+        <span>Keep you notes safe!</span>
+        <img src={GirlPicture} />
       </div>
-    );
-  }
-}
-
-const NewP = styled.h3`
-  position: fixed;
-  width: 343px;
-  height: 59px;
-  left: 210px;
-  top: 730px;
-
-  font-family: Arsenal;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 38px;
-
-  color: #acacac;
-  @media (max-width: 500px) {
-    width: 209px;
-    height: 50%;
-    left: 2px;
-    top: 630px;
-    font-size: 24px;
-    line-height: 30px;
-  }
-`;
-
-const P = styled.p`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 0px;
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-
-  color: #939393;
-
-  @media (max-width: 500px) {
-    left: 166px;
-    top: 250px;
-
-    font-size: 12px;
-    line-height: 22px;
-  }
-`;
-
-const Button = styled.button`
-  position: fixed;
-
-  width: 160px;
-  height: 65px;
-  left: 509px;
-  top: 400px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-
-  background: #d5d5d5;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  :hover {
-    background: #ffffff;
-  }
-  @media (max-width: 500px) {
-    width: 20%;
-    height: 26px;
-    left: 145px;
-    top: 354px;
-  }
-`;
-
-const Header = styled.h1`
-  position: fixed;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  left: -300px;
-  top: 30px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 70px;
-  line-height: 129px;
-
-  color: #ffffff;
-  @media (max-width: 500px) {
-    width: 75px;
-    height: 36px;
-    left: 150px;
-    top: 167px;
-
-    font-size: 18px;
-    line-height: 33px;
-  }
-`;
-
-const Header2 = styled.h1`
-  position: fixed;
-  width: 480px;
-  height: 165px;
-  left: 967px;
-  top: 197px;
-
-  font-family: Alfa Slab One;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 100px;
-  line-height: 137px;
-
-  color: #f8f1ff;
-
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  @media (max-width: 500px) {
-    width: 60%;
-    height: 66px;
-    left: 87px;
-    top: 22px;
-    font-size: 48px;
-    line-height: 66px;
-  }
-`;
-
-const Header3 = styled.h4`
-  position: fixed;
-  width: 394px;
-  height: 36px;
-  left: 990px;
-  top: 340px;
-
-  font-family: Alfa Slab One;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 41px;
-
-  color: #d4acfd;
-
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  @media (max-width: 500px) {
-    width: 60%;
-    height: 36px;
-    left: 90px;
-    top: 83px;
-    font-size: 18px;
-    line-height: 25px;
-  }
-`;
+    </Container>
+  );
+};
 
 export default Layout;
+
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  background: url(${Background});
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    height: auto;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+
+    .logos {
+      position: absolute;
+      bottom: 50px;
+      img {
+        margin-left: 15px;
+      }
+    }
+
+    label {
+      font-size: 20px;
+      color: white;
+    }
+
+    input {
+      width: 250px;
+      padding: 0.5em;
+      margin-bottom: 5px;
+    }
+
+    button {
+      padding: 0.8em;
+      border: inherit;
+      border-radius: 3px;
+      box-shadow: 10px 10px 5px rgba(108, 99, 255, 0.49);
+      animation: upanddown 1.2s infinite linear;
+      position: relative;
+
+      @keyframes upanddown {
+        0% {
+          bottom: 0px;
+        }
+        25% {
+          bottom: -5px;
+        }
+        50% {
+          bottom: -5px;
+        }
+        75% {
+          bottom: 0px;
+        }
+      }
+    }
+  }
+
+  .content {
+    width: 100%;
+
+    span {
+      font-family: "Indie Flower", cursive;
+      font-size: 35px;
+      color: white;
+      font-weight: bold;
+    }
+
+    img {
+      width: 70%;
+      height: auto;
+      position: relative;
+      margin-left: 20px;
+    }
+  }
+`;

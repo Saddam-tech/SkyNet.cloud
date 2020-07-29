@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Icons from "../../components/icons/Icons";
 import SideDrawer from "../../components/SideDrawer/SideDrawer";
 import Burger from "../../components/Burger/Burger";
 
@@ -39,7 +38,6 @@ class Notes extends Component {
           <strong>Let`s type something!</strong>
         </H4>
 
-        <Icons />
         <Burger click={this.sideDrawerOpenHandler} />
         <SideDrawer
           goBackButton={this.goBackHandler}
@@ -63,21 +61,21 @@ const Container = styled.div`
 `;
 
 const Img2 = styled.img`
-position: absolute;
-width: 48px;
-height: 45px;
-left: 17px;
-top: 839px;
-@media (max-width: 500px) {
-  width: 31px;
-  height: 34px;
-  left: 21px;
-  top: 754px;
-} 
+  position: absolute;
+  width: 48px;
+  height: 45px;
+  left: 17px;
+  top: 839px;
+  @media (max-width: 500px) {
+    width: 31px;
+    height: 34px;
+    left: 21px;
+    top: 754px;
+  }
 
-:hover {
-background: #ffffff;
-}
+  :hover {
+    background: #ffffff;
+  }
 `;
 
 const H4 = styled.div`
