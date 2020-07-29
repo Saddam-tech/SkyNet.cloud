@@ -57,6 +57,11 @@ const Container = styled.div`
   justify-content: space-around;
   align-items: center;
 
+  @media (max-width: 428px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+
   h2 {
     position: absolute;
     top: 20px;
@@ -120,6 +125,11 @@ const Container = styled.div`
 
   .content {
     width: 100%;
+
+    @media (max-width: 428px) {
+      position: relative;
+      margin-bottom: 15px;
+    }
 
     span {
       font-family: "Indie Flower", cursive;
