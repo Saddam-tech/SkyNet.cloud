@@ -19,7 +19,7 @@ const Layout = () => {
   const loginHandler = () => {
     // browserHistory.push("/notes");
   };
-
+ 
   return (
     <Container>
       <h2>SkyNetCloud</h2>
