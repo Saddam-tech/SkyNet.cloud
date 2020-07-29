@@ -38,7 +38,7 @@ const Layout = () => {
       </form>
 
       <div className="content">
-        <span>Keep you notes safe!</span>
+        <span>Keep your notes safe!</span>
         <img src={GirlPicture} />
       </div>
     </Container>
