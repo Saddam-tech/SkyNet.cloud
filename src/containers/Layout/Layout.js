@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { browserHistory } from "react-router-dom";
+//import { browserHistory } from "react-router-dom";
 
 import Background from "../../assets/background.png";
 import GirlPicture from "../../assets/note-svg.svg";
-import Brand from "../../assets/our-logo.png";
+//import Brand from "../../assets/our-logo.png";
 
 import Instagram from "../../assets/instagram.png";
 import Facebook from "../../assets/facebook.png";
@@ -25,21 +25,21 @@ const Layout = () => {
       <h2>SkyNetCloud</h2>
       <form onSubmit={loginHandler}>
         <label>Sign In</label>
-        <input type="text" />
-        <input type="text" />
+        <input type="text" placeholder="Email"/>
+        <input type="text" placeholder="Password"/>
         <button type="submit">Sign In</button>
 
         <div className="logos">
-          <img src={Facebook} />
-          <img src={Instagram} />
-          <img src={Google} />
-          <img src={Twitter} />
+          <img src={Facebook} alt="" />
+          <img src={Instagram} alt="" />
+          <img src={Google} alt="" />
+          <img src={Twitter} alt="" />
         </div>
       </form>
 
       <div className="content">
         <span>Keep your notes safe!</span>
-        <img src={GirlPicture} />
+        <img src={GirlPicture} alt="" />
       </div>
     </Container>
   );
@@ -78,6 +78,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     margin-bottom: 100px;
+     
 
     .logos {
       position: absolute;
