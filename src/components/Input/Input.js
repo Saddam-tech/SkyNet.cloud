@@ -8,6 +8,9 @@ const input = (props) => {
     case "textarea":
       inputElement = <textarea {...props.elementConfig} value={props.value} onChange={props.changed} />;
       break;
+      default:
+        inputElement = <textarea {...props.elementConfig} value={props.value} onChange={props.changed} />;
+
   }
 
   return (
