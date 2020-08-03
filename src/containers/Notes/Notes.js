@@ -40,10 +40,6 @@ class Notes extends Component {
           src="./assets/keyboard_backspace-24px.svg"
           alt="new"
         />
-        <H4>
-          <strong>Let`s type something!</strong>
-        </H4>
-
         <Toolbar 
         click={this.sideDrawerOpenHandler}
         gotoInput={this.addInputHandler}
@@ -88,28 +84,6 @@ const Img2 = styled.img`
 
   :hover {
     background: #ffffff;
-  }
-`;
-
-const H4 = styled.div`
-  position: absolute;
-  width: 671px;
-  height: 87px;
-  left: 534px;
-  top: 83px;
-
-  font-family: Angkor;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 55px;
-
-  color: #000000;
-  @media (max-width: 500px) {
-    width: 369px;
-    height: 52px;
-    left: 8px;
-    top: 265px;
   }
 `;
 
