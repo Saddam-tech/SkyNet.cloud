@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import SideDrawer from "../../components/SideDrawer/SideDrawer";
-import Burger from "../../components/Burger/Burger";
+import Toolbar from '../../components/Navigation/Toolbar';
+import { Route } from 'react-router-dom';
+import NotePad from '../../containers/Notes/NotePad';
 
 class Notes extends Component {
   state = {
@@ -26,6 +28,10 @@ class Notes extends Component {
     this.props.history.goBack();
   };
 
+  addInputHandler = () => {
+    this.props.history.replace('/Notes/NotePad')
+  };
+
   render() {
     return (
       <Container>
@@ -38,11 +44,18 @@ class Notes extends Component {
           <strong>Let`s type something!</strong>
         </H4>
 
-        <Burger click={this.sideDrawerOpenHandler} />
+        <Toolbar 
+        click={this.sideDrawerOpenHandler}
+        gotoInput={this.addInputHandler}
+        />
         <SideDrawer
           goBackButton={this.goBackHandler}
           closed={this.sideDrawerCloseHandler}
           openState={this.state.showSideDrawer}
+        />
+        <Route 
+        path={this.props.match.path + '/NotePad'}
+        render={(props) => (<NotePad  />)}
         />
       </Container>
     );

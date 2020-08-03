@@ -3,7 +3,7 @@ import classes from './Burger.module.css';
 
 
 const burger = (props) => (
-    <div className={classes.Burger} onClick={props.click}>
+    <div className={classes.Burger} onClick={props.clicked}>
         <div></div>
         <div></div>
         <div></div>

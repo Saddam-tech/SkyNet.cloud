@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Input from "../../components/Input/Input";
-import classes from "*.module.css";
+import classes from "./NotePad.module.css";
+import Spinner from '../../components/Spinner/Spinner';
 
 class NotePad extends Component {
   state = {
     notesForm: {
       note: {
-        elementType: "input",
+        elementType: "textarea",
         elementConfig: {
           type: "text",
           placeholder: "Write your note here!",
@@ -24,7 +25,7 @@ class NotePad extends Component {
     const updatedFormElement = {
         ...this.state.notesForm[inputIdentifier]
     };
-    updatedFormElement = event.target.value;
+    updatedFormElement.value = event.target.value;
     updatedNotesForm[inputIdentifier] = updatedFormElement;
     this.setState({notesForm: updatedNotesForm})
   }
@@ -45,8 +46,10 @@ class NotePad extends Component {
           <Input
             key={formElement.id}
             type={formElement.config.elementType}
+            elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
-            changed={(event => this.inputChangedHandler(event, formElement.id))}
+            changed={(event) => this.inputChangedHandler(event, formElement.id)}
+            value={formElement.config.value}
           />
         ))}
         <button>

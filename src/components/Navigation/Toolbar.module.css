@@ -4,15 +4,26 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #703b09;
+    background-color: #b1b1b1;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 0 20px;
     box-sizing: border-box;
     z-index: 90;
 }
 
+.Toolbar:hover {
+    background-color: #a3a2a2;
+}
+
 .Toolbar nav {
     height: 100%;
+}
+
+.Toolbar button {
+     margin: 10px 0;
+     padding: 16px 10px;
+     list-style: none;
+     align-items: center;
 }

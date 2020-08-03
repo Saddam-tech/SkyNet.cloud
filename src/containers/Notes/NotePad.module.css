@@ -2,8 +2,11 @@
      margin: 20px auto;
      width: 80%;
      text-align: center;
-     box-shadow: 0 2px 3px #ccc;
+     box-shadow:  31px 31px 62px #c4c4c4, 
+             -31px -31px 62px #ffffff;
      border: 1px solid #eee;
+     border-radius: 50px;
+     background: #e6e6e6;
      padding: 10px;
      box-sizing: border-box;
  }
