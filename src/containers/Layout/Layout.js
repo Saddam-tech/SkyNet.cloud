@@ -17,7 +17,7 @@ const Layout = () => {
   // });
 
   const loginHandler = () => {
-    // browserHistory.push("/notes");
+    this.props.history.push('/notes')
   };
  
   return (

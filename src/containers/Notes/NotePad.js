@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Input from "../../components/Input/Input";
 import classes from "./NotePad.module.css";
-import Spinner from '../../components/Spinner/Spinner';
+import Spinner from "../../components/Spinner/Spinner";
+import axios from "../../axios/axios";
+import { withRouter } from 'react-router-dom';
 
 class NotePad extends Component {
   state = {
@@ -15,20 +17,41 @@ class NotePad extends Component {
       },
       value: "",
     },
-    loading: false
+    loading: false,
   };
 
   inputChangedHandler = (event, inputIdentifier) => {
     const updatedNotesForm = {
-        ...this.state.notesForm
+      ...this.state.notesForm,
     };
     const updatedFormElement = {
-        ...this.state.notesForm[inputIdentifier]
+      ...this.state.notesForm[inputIdentifier],
     };
     updatedFormElement.value = event.target.value;
     updatedNotesForm[inputIdentifier] = updatedFormElement;
-    this.setState({notesForm: updatedNotesForm})
-  }
+    this.setState({ notesForm: updatedNotesForm });
+  };
+
+  orderHandler = (event) => {
+    event.preventDefault();
+    this.setState({ loading: true });
+    const formData = {};
+    for (let formElementIdentifier in this.state.notesForm) {
+      formData[formElementIdentifier] = this.state.notesForm[
+        formElementIdentifier
+      ].value;
+    }
+
+    const inputData = {
+      userNote: formData,
+    };
+
+    axios.post("/inputData.json", inputData)
+    .then((response) => {
+      this.setState({ loading: false });
+      this.props.history.push("/notes");
+    });
+  };
 
   render() {
     let formElementsArray = [];
@@ -52,9 +75,7 @@ class NotePad extends Component {
             value={formElement.config.value}
           />
         ))}
-        <button>
-            Save
-        </button>
+        <button>Save</button>
       </form>
     );
 
@@ -71,4 +92,4 @@ class NotePad extends Component {
   }
 }
 
-export default NotePad;
+export default withRouter(NotePad);
