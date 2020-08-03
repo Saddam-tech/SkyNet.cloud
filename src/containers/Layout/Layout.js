@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 //import { browserHistory } from "react-router-dom";
 
@@ -11,39 +11,41 @@ import Facebook from "../../assets/facebook.png";
 import Google from "../../assets/google.png";
 import Twitter from "../../assets/twitter.png";
 
-const Layout = () => {
+class Layout extends Component {
   // useEffect((props) => {
   //   console.log(props);
   // });
 
-  const loginHandler = () => {
+ loginHandler = () => {
     this.props.history.push('/notes')
   };
- 
-  return (
-    <Container>
-      <h2>SkyNetCloud</h2>
-      <form onSubmit={loginHandler}>
-        <label>Sign In</label>
-        <input type="text" placeholder="Email"/>
-        <input type="text" placeholder="Password"/>
-        <button type="submit">Sign In</button>
 
-        <div className="logos">
-          <img src={Facebook} alt="" />
-          <img src={Instagram} alt="" />
-          <img src={Google} alt="" />
-          <img src={Twitter} alt="" />
+  render() { 
+    return (
+      <Container>
+        <h2>SkyNetCloud</h2>
+        <form onSubmit={this.loginHandler}>
+          <label>Sign In</label>
+          <input type="text" placeholder="Email"/>
+          <input type="text" placeholder="Password"/>
+          <button type="submit">Sign In</button>
+  
+          <div className="logos">
+            <img src={Facebook} alt="" />
+            <img src={Instagram} alt="" />
+            <img src={Google} alt="" />
+            <img src={Twitter} alt="" />
+          </div>
+        </form>
+  
+        <div className="content">
+          <span>Keep your notes safe!</span>
+          <img src={GirlPicture} alt="" />
         </div>
-      </form>
-
-      <div className="content">
-        <span>Keep your notes safe!</span>
-        <img src={GirlPicture} alt="" />
-      </div>
-    </Container>
-  );
-};
+      </Container>
+    );
+  };
+  }
 
 export default Layout;
 
