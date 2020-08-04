@@ -29,7 +29,7 @@ class Notes extends Component {
   };
 
   addInputHandler = () => {
-    this.props.history.replace('/notes/NotePad')
+    this.props.history.replace('/notes/NotePad 200')
   };
 
   render() {
