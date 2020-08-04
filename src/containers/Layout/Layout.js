@@ -17,7 +17,7 @@ class Layout extends Component {
   // });
 
  loginHandler = () => {
-    this.props.history.push('/notes 200')
+    this.props.history.push('/notes.html 200')
   };
 
   render() { 
