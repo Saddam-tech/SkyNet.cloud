@@ -14,7 +14,9 @@ const fetchedNote = (props) => {
 
     const NotesOutPut = fetchedData.map((notess) => {
         return(
-            <span style={{
+            <span 
+            key={notess.name}
+            style={{
                 textTransform: "capitalize",
                 display: 'inline-block',
                 margin: '0 8px',

@@ -19,7 +19,7 @@ class FetchedNotes extends Component {
         for (let key in res.data) {
             fetchedNotes.push({
                 ...res.data[key],
-                id: key
+               id: key
             })
         };
 
@@ -29,7 +29,7 @@ class FetchedNotes extends Component {
 
 
     })
-    }
+    };
      
     
     

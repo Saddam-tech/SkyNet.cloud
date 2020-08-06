@@ -25,7 +25,7 @@ const SideDrawer = (props) => {
           src="./assets/keyboard_backspace-24px.svg"
           alt="new"
         />
-        <FetchedNotes />
+        <FetchedNotes sideDrawerClicked={props.openState} />
       </div>
     </Aux>
   );
