@@ -50,6 +50,7 @@ class NotePad extends Component {
     .then((response) => {
       this.setState({ loading: false });
       this.props.history.push("/notes");
+      console.log('Data has been posted!');
     });
   };
 

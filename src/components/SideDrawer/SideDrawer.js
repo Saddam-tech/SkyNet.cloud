@@ -4,6 +4,7 @@ import styled from "styled-components";
 //import { withRouter } from "react-router-dom";
 import BackDrop from "../BackDrop/BackDrop";
 import Aux from "../../containers/hoc/Aux/Aux";
+import FetchedNotes from '../../containers/FetchedNotes/FetchedNotes';
 
 const SideDrawer = (props) => {
   let attachedClasses = [classes.SideDrawer, classes.Close];
@@ -18,11 +19,13 @@ const SideDrawer = (props) => {
 
       <div className={attachedClasses.join(" ")}>
         <Input placeholder="Search"></Input>
+         
         <Img2
           onClick={props.goBackButton}
           src="./assets/keyboard_backspace-24px.svg"
           alt="new"
         />
+        <FetchedNotes />
       </div>
     </Aux>
   );
