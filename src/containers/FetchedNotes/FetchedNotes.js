@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from '../../axios/axios';
 import FetchedNote from './FetchedNote';
 import classes from './FetchedNotes.module.css';
+import Spinner from '../../components/Spinner/Spinner';
 
 
 
@@ -34,14 +35,23 @@ class FetchedNotes extends Component {
     
     
     render() {
+
+        let fetchedNotes = (<div>
+            {this.state.notes.map(anote => (
+                <FetchedNote
+                    key={anote.id}
+                    notes={anote.userNote}
+                    />
+            ))}
+        </div>);
+
+        if (this.state.loading) {
+            fetchedNotes =  <Spinner />
+        }
+
         return(
             <div className={classes.FetchedNotes}>
-                {this.state.notes.map(anote => (
-                    <FetchedNote
-                        key={anote.id}
-                        notes={anote.userNote}
-                        />
-                ))}
+                 {fetchedNotes}
             </div>
         );
     }

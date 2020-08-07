@@ -81,7 +81,7 @@ class NotePad extends Component {
     );
 
     if (this.state.loading) {
-      form = <Spinner />;
+      form = <Spinner style={{}}/>;
     }
 
     return (

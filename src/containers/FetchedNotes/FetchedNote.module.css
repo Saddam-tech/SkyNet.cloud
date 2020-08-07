@@ -6,4 +6,13 @@
   padding: 10px;
   margin: 10px auto;
   box-sizing: border-box;
+  cursor: pointer;
+}
+
+.FetchedNote:hover,
+.FetchedNote:active,
+.FetchedNote.active {
+    background-color: #f88686;
+    border: 4px solid #40A4C8;
+    color: white;
 }
