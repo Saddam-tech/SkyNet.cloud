@@ -6,18 +6,20 @@ import styled from "styled-components";
 import BackDrop from "../BackDrop/BackDrop";
 import Aux from "../../containers/hoc/Aux/Aux";
 import FetchedNote from "../../containers/FetchedNotes/FetchedNote";
-import Spinner from "../Spinner/Spinner";
+import Spinner2 from "../Spinner/Spinner2";
 
 class SideDrawer extends Component {
   state = {
     notes: [],
     loading: true,
-    notesLoaded: true,
+    notesLoaded: true
   };
 
-  componentDidUpdate(nextProps, nextState) {
+  componentDidUpdate(nextProps) {
     if (nextProps.openState !== this.props.openState) {
-      axios.get("/inputData.json").then((res) => {
+      axios
+      .get("/inputData.json")
+      .then((res) => {
         const fetchedNotes = [];
         for (let key in res.data) {
           fetchedNotes.push({
@@ -36,6 +38,7 @@ class SideDrawer extends Component {
       });
     }
   }
+ 
 
   render() {
     let attachedClasses = [classes.SideDrawer, classes.Close];
@@ -53,7 +56,7 @@ class SideDrawer extends Component {
     );
 
     if (this.state.loading) {
-      fetchedNotes = <Spinner />;
+      fetchedNotes = <Spinner2 />;
     }
 
     return (
