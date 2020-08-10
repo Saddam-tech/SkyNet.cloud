@@ -3,7 +3,7 @@ import Input from "../../components/Input/Input";
 import classes from "./NotePad.module.css";
 import Spinner from "../../components/Spinner/Spinner";
 import axios from "../../axios/axios";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 class NotePad extends Component {
   state = {
@@ -37,20 +37,17 @@ class NotePad extends Component {
     this.setState({ loading: true });
     const formData = {};
     for (let formElementIdentifier in this.state.notesForm) {
-      formData[formElementIdentifier] = this.state.notesForm[
-        formElementIdentifier
-      ].value;
+      formData[formElementIdentifier] = this.state.notesForm[formElementIdentifier].value;
     }
 
     const inputData = {
-      userNote: formData,
+      userNote: formData
     };
 
-    axios.post("/inputData.json", inputData)
-    .then((response) => {
+    axios.post("/inputData.json", inputData).then((response) => {
       this.setState({ loading: false });
       this.props.history.push("/notes");
-      console.log('Data has been posted!');
+      console.log("Data has been posted!");
     });
   };
 
@@ -81,7 +78,7 @@ class NotePad extends Component {
     );
 
     if (this.state.loading) {
-      form = <Spinner style={{}}/>;
+      form = <Spinner />;
     }
 
     return (

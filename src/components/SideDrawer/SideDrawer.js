@@ -1,36 +1,80 @@
-import React from "react";
+import React, { Component } from "react";
+import axios from "../../axios/axios";
 import classes from "./SideDrawer.module.css";
 import styled from "styled-components";
 //import { withRouter } from "react-router-dom";
 import BackDrop from "../BackDrop/BackDrop";
 import Aux from "../../containers/hoc/Aux/Aux";
-import FetchedNotes from '../../containers/FetchedNotes/FetchedNotes';
+import FetchedNote from "../../containers/FetchedNotes/FetchedNote";
+import Spinner from "../Spinner/Spinner";
 
-const SideDrawer = (props) => {
-  let attachedClasses = [classes.SideDrawer, classes.Close];
+class SideDrawer extends Component {
+  state = {
+    notes: [],
+    loading: true,
+    notesLoaded: true,
+  };
 
-  if (props.openState) {
-    attachedClasses = [classes.SideDrawer, classes.Open];
+  componentDidUpdate(nextProps, nextState) {
+    if (nextProps.openState !== this.props.openState) {
+      axios.get("/inputData.json").then((res) => {
+        const fetchedNotes = [];
+        for (let key in res.data) {
+          fetchedNotes.push({
+            ...res.data[key],
+            id: key,
+          });
+        }
+
+        this.setState({
+          notesLoaded: false,
+          loading: false,
+          notes: fetchedNotes,
+        });
+
+        console.log("Data has been fetched!");
+      });
+    }
   }
 
-  return (
-    <Aux>
-      <BackDrop show={props.openState} closing={props.closed} />
+  render() {
+    let attachedClasses = [classes.SideDrawer, classes.Close];
 
-      <div className={attachedClasses.join(" ")}>
-        <Input placeholder="Search"></Input>
-         
-        <Img2
-          onClick={props.goBackButton}
-          src="./assets/keyboard_backspace-24px.svg"
-          alt="new"
-        />
-        <FetchedNotes sideDrawerClicked={props.openState} />
+    if (this.props.openState) {
+      attachedClasses = [classes.SideDrawer, classes.Open];
+    }
+
+    let fetchedNotes = (
+      <div>
+        {this.state.notes.map((anote) => (
+          <FetchedNote key={anote.id} notes={anote.userNote} />
+        ))}
       </div>
-    </Aux>
-  );
-};
+    );
 
+    if (this.state.loading) {
+      fetchedNotes = <Spinner />;
+    }
+
+    return (
+      <Aux>
+        <BackDrop show={this.props.openState} closing={this.props.closed} />
+
+        <div className={attachedClasses.join(" ")}>
+          <Input placeholder="Search" />
+
+          <Img2
+            onClick={this.props.goBackButton}
+            src="./assets/keyboard_backspace-24px.svg"
+            alt="new"
+          />
+
+          <div className={classes.FetchedNotes}>{fetchedNotes}</div>
+        </div>
+      </Aux>
+    );
+  }
+}
 
 const Input = styled.input`
   position: absolute;
@@ -57,7 +101,6 @@ const Input = styled.input`
     height: 47px;
     left: 73px;
     top: 42px;
-    
 
     font-family: Angkor;
     font-style: normal;
@@ -67,26 +110,24 @@ const Input = styled.input`
 
     color: #9b9b9b;
   }
-
 `;
 
 const Img2 = styled.img`
-position: absolute;
-width: 48px;
-height: 45px;
-left: 17px;
-top: 839px; 
-@media (max-width: 500px) {
-  width: 31px;
-  height: 34px;
-  left: 21px;
-  top: 754px;
-}
+  position: absolute;
+  width: 48px;
+  height: 45px;
+  left: 17px;
+  top: 839px;
+  @media (max-width: 500px) {
+    width: 31px;
+    height: 34px;
+    left: 21px;
+    top: 754px;
+  }
 
-
-:hover {
-background: #ffffff;
-}
+  :hover {
+    background: #ffffff;
+  }
 `;
 
 export default SideDrawer;
