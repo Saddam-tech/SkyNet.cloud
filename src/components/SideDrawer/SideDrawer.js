@@ -15,8 +15,7 @@ class SideDrawer extends Component {
     notesLoaded: true
   };
 
-  componentDidUpdate(nextProps) {
-    if (nextProps.openState !== this.props.openState) {
+  componentDidMount() {
       axios
       .get("/inputData.json")
       .then((res) => {
@@ -37,7 +36,7 @@ class SideDrawer extends Component {
         console.log("Data has been fetched!");
       });
     }
-  }
+  
  
 
   render() {
