@@ -44,11 +44,15 @@ class Notes extends Component {
         click={this.sideDrawerOpenHandler}
         gotoInput={this.addInputHandler}
         />
+
+        {this.state.showSideDrawer ?
         <SideDrawer
           goBackButton={this.goBackHandler}
           closed={this.sideDrawerCloseHandler}
           openState={this.state.showSideDrawer}
-        />
+        /> : null
+        }
+
         <Route 
         path={this.props.match.path + '/NotePad'}
         render={(props) => (<NotePad  />)}
