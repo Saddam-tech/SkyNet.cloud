@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Background from "../../assets/background.png";
 import GirlPicture from "../../assets/note-svg.svg";
@@ -10,8 +10,8 @@ import Input from "../../components/Input/Input";
 import { updateObject } from "../../shared/utility";
 import Spinner from "../../components/Spinner/Spinner";
 import axios from "axios";
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import Button from "@material-ui/core/Button";
+import { connect } from 'react-redux';
 
 const Layout = (props) => {
   const [isSignup, setIsSignup] = useState(true);
@@ -107,8 +107,14 @@ const Layout = (props) => {
         <label>Sign In</label>
         {form}
         <div className="buttons">
-          <Button variant='contained' color='primary' onClick={submitHandler}>Submit</Button>
-          <Button variant='contained' color='primary' onClick={switchAuthModeHandler}>
+          <Button variant="contained" color="primary" onClick={submitHandler}>
+            Submit
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={switchAuthModeHandler}
+          >
             {isSignup ? "SignIn" : "SignUp"}
           </Button>
         </div>
@@ -129,7 +135,13 @@ const Layout = (props) => {
   );
 };
 
-export default Layout;
+const mapStateToProps = state => {
+  return {
+    
+  }
+}
+
+export default connect(mapStateToProps)(Layout);
 
 const Container = styled.div`
   width: 100%;
@@ -141,7 +153,7 @@ const Container = styled.div`
   box-shadow: 0, 2px, 3px, #ccc;
   display: flex;
   justify-content: space-around;
-  align-items: center; 
+  align-items: center;
 
   @media (max-width: 428px) {
     flex-direction: column;
@@ -164,8 +176,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     margin-bottom: 100px;
-    left: 20px; 
-
+    left: 20px;
 
     .logos {
       position: absolute;
@@ -187,7 +198,7 @@ const Container = styled.div`
     }
     .buttons {
       display: flex;
-      flex-direction: row; 
+      flex-direction: row;
       button {
         padding: 0.8em;
         border: inherit;
