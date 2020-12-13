@@ -10,7 +10,7 @@ const input = (props) => {
       inputElement = (
         <TextField
           {...props.elementConfig}
-          value={props.value}
+          value={props.value}    
           onChange={props.changed}
           variant='filled' 
           color='secondary'

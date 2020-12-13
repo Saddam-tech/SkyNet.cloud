@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Background from "../../assets/background.png";
 import GirlPicture from "../../assets/note-svg.svg";
@@ -9,9 +9,10 @@ import Twitter from "../../assets/twitter.png";
 import Input from "../../components/Input/Input";
 import { updateObject } from "../../shared/utility";
 import Spinner from "../../components/Spinner/Spinner";
-import axios from "axios";
 import Button from "@material-ui/core/Button";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/actions";
+import { Redirect } from "react-router-dom";
 
 const Layout = (props) => {
   const [isSignup, setIsSignup] = useState(true);
@@ -73,27 +74,13 @@ const Layout = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const authData = {
-      email: authForm.email.value,
-      password: authForm.password.value,
-      returnSecureToken: true,
-    };
-    let url =
-      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB8du5DrQxsi8H3gm99TcZvrSocFv1rsUY";
+    props.onAuth(authForm.email.value, authForm.password.value, isSignup);
+  };
 
-    if (!isSignup) {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB8du5DrQxsi8H3gm99TcZvrSocFv1rsUY";
-    }
+  let authRedirectPath = null;
 
-    axios
-      .post(url, authData)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  if (props.isAuthenticated) {
+    authRedirectPath = <Redirect to={props.authRedirectPath} />
   };
 
   // const loginHandler = () => {
@@ -106,6 +93,7 @@ const Layout = (props) => {
       <form>
         <label>Sign In</label>
         {form}
+        {authRedirectPath}
         <div className="buttons">
           <Button variant="contained" color="primary" onClick={submitHandler}>
             Submit
@@ -135,13 +123,21 @@ const Layout = (props) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    
-  }
-}
+    isAuthenticated: state.token !== null,
+    authRedirectPath: state.authRedirectPath,
+  };
+};
 
-export default connect(mapStateToProps)(Layout);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (email, password, isSignup) =>
+      dispatch(actions.auth(email, password, isSignup)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);
 
 const Container = styled.div`
   width: 100%;
