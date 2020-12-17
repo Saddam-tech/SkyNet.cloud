@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import styled from "styled-components";
 // import Background from "../../assets/background.png";
 // import GirlPicture from "../../assets/note-svg.svg";
@@ -28,7 +28,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const Layout = (props) => {
   const [isSignup, setIsSignup] = useState(true);
-  const [loading, setIsLoading] = useState(false);
+  const [loading] = useState(false);
   const [authForm, setAuthForm] = useState({
     email: {
       elementType: "input",
@@ -183,6 +183,7 @@ const Layout = (props) => {
           <img src={Instagram} alt="instagram" href="https://www.instagram.com/salokhiddeenov727/"/>
           <img src={Facebook} alt="facebook" href="https://material-ui.com/" />
           <img src={Google} alt="instagram" href="https://material-ui.com/" />
+          <img src={Twitter} alt="instagram" href="https://material-ui.com/" />
         </Link>
       </Typography>
     </Grid>
