@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import SideDrawer from "../../components/SideDrawer/SideDrawer";
-import Toolbar from '../../components/Navigation/Toolbar';
-import { Route } from 'react-router-dom';
-import NotePad from '../../containers/Notes/NotePad';
+import Toolbar from "../../components/Navigation/Toolbar";
+import { Route } from "react-router-dom";
+import NotePad from "../../containers/Notes/NotePad";
+import { Exit } from "@styled-icons/icomoon/";
+import {connect} from 'react-redux';
+import * as actions from '../../store/actions/actions';
 
 class Notes extends Component {
   state = {
@@ -25,37 +28,34 @@ class Notes extends Component {
   }
 
   goBackHandler = () => {
-    this.props.history.goBack();
+    this.props.onLogout();
+    this.props.history.push('/');
   };
 
   addInputHandler = () => {
-    this.props.history.replace('/notes/NotePad')
+    this.props.history.replace("/notes/NotePad");
   };
 
   render() {
     return (
       <Container>
-        <Img2
-          onClick={this.goBackHandler}
-          src="./assets/keyboard_backspace-24px.svg"
-          alt="new"
-        />
-        <Toolbar 
-        click={this.sideDrawerOpenHandler}
-        gotoInput={this.addInputHandler}
+        <StyledExit onClick={this.goBackHandler} />
+        <Toolbar
+          click={this.sideDrawerOpenHandler}
+          gotoInput={this.addInputHandler}
         />
 
-        {this.state.showSideDrawer ?
-        <SideDrawer
-          goBackButton={this.goBackHandler}
-          closed={this.sideDrawerCloseHandler}
-          openState={this.state.showSideDrawer}
-        /> : null
-        }
+        {this.state.showSideDrawer ? (
+          <SideDrawer
+            goBackButton={this.goBackHandler}
+            closed={this.sideDrawerCloseHandler}
+            openState={this.state.showSideDrawer}
+          />
+        ) : null}
 
-        <Route 
-        path={this.props.match.path + '/NotePad'}
-        render={(props) => (<NotePad  />)}
+        <Route
+          path={this.props.match.path + "/NotePad"}
+          render={(props) => <NotePad />}
         />
       </Container>
     );
@@ -73,10 +73,10 @@ const Container = styled.div`
   background-color: #e8e8e8;
 `;
 
-const Img2 = styled.img`
+const StyledExit = styled(Exit)`
   position: absolute;
   width: 48px;
-  height: 45px;
+  height: 35px;
   left: 17px;
   top: 839px;
   @media (max-width: 500px) {
@@ -91,4 +91,10 @@ const Img2 = styled.img`
   }
 `;
 
-export default Notes;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogout: () => dispatch(actions.authLogout())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Notes);

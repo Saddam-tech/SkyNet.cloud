@@ -7,6 +7,7 @@ import BackDrop from "../BackDrop/BackDrop";
 import Aux from "../../containers/hoc/Aux/Aux";
 import FetchedNote from "../../containers/FetchedNotes/FetchedNote";
 import Spinner2 from "../Spinner/Spinner2";
+import { Exit } from "@styled-icons/icomoon/";
 
 class SideDrawer extends Component {
   state = {
@@ -65,11 +66,7 @@ class SideDrawer extends Component {
         <div className={attachedClasses.join(" ")}>
           <Input placeholder="Search" />
 
-          <Img2
-            onClick={this.props.goBackButton}
-            src="./assets/keyboard_backspace-24px.svg"
-            alt="new"
-          />
+          <StyledExit onClick={this.props.goBackButton} />
 
           <div className={classes.FetchedNotes}>{fetchedNotes}</div>
         </div>
@@ -114,10 +111,10 @@ const Input = styled.input`
   }
 `;
 
-const Img2 = styled.img`
+const StyledExit = styled(Exit)`
   position: absolute;
   width: 48px;
-  height: 45px;
+  height: 35px;
   left: 17px;
   top: 839px;
   @media (max-width: 500px) {

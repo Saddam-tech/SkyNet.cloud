@@ -7,6 +7,7 @@ const initialState = {
     loading: false,
     error: null,
     authRedirectPath: '/notes',
+    mainPath: ''
 };
 
 const authStart = (state, action) => {
@@ -28,10 +29,6 @@ const authLogout = (state, action) => {
 
 const authFail = (state, action) => {
     return updateObject(state, {error: action.err, loading: false})
-}
-
-const setAuthRedirectPath = () => {
-    return updateObject()
 }
 
 const rootReducer = (state = initialState, action) => {
