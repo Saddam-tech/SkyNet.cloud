@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Input.module.css";
-import TextField from '@material-ui/core/TextField';
+import TextField from "@material-ui/core/TextField";
 
 const input = (props) => {
   let inputElement = null;
@@ -10,21 +10,32 @@ const input = (props) => {
       inputElement = (
         <TextField
           {...props.elementConfig}
-          value={props.value}    
+          value={props.value}
           onChange={props.changed}
-          variant='filled' 
-          color='secondary'
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="email"
+          label="Email Address"
+          name="email"
+          autoComplete="email"
+          autoFocus
         />
       );
       break;
-    case "textarea":
+    case "password":
       inputElement = (
         <TextField
-          {...props.elementConfig}
-          value={props.value}
-          onChange={props.changed}
-          variant='filled' 
-          color='secondary'
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          name="password"
+          label="Password"
+          type="password"
+          id="password"
+          autoComplete="current-password"
         />
       );
       break;
@@ -34,8 +45,14 @@ const input = (props) => {
           {...props.elementConfig}
           value={props.value}
           onChange={props.changed}
-          variant='filled'
-          color='secondary'
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          label="Email"
+          name="Email"
+          autoComplete="password"
+          autoFocus
         />
       );
   }
