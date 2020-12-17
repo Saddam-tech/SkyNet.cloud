@@ -27,6 +27,9 @@ const input = (props) => {
     case "password":
       inputElement = (
         <TextField
+          {...props.elementConfig}
+          value={props.value}
+          onChange={props.changed}
           variant="outlined"
           margin="normal"
           required
