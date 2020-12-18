@@ -27,8 +27,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 const Layout = (props) => {
-  const [isSignup, setIsSignup] = useState(true);
-  const [loading] = useState(false);
+  const [isSignup, setIsSignup] = useState(false); 
   const [authForm, setAuthForm] = useState({
     email: {
       elementType: "input",
@@ -78,7 +77,7 @@ const Layout = (props) => {
     setIsSignup(!isSignup);
   };
 
-  if (loading) {
+  if (props.loading) {
     form = <Spinner />;
   }
 
@@ -163,29 +162,48 @@ const Layout = (props) => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2" onClick={switchAuthModeHandler}>
+                <Link variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href='/Signup'  variant="body2" onClick={switchAuthModeHandler}>
                   {"Don't have an account? Sign Up"}
                 </Link>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  align="center"
+                >
+                  <Link color="inherit">
+                    <img
+                      src={Instagram}
+                      alt="instagram"
+                      href="https://www.instagram.com/salokhiddeenov727/"
+                    />
+                    <img
+                      src={Facebook}
+                      alt="facebook"
+                      href="https://material-ui.com/"
+                    />
+                    <img
+                      src={Google}
+                      alt="instagram"
+                      href="https://material-ui.com/"
+                    />
+                    <img
+                      src={Twitter}
+                      alt="instagram"
+                      href="https://material-ui.com/"
+                    />
+                  </Link>
+                </Typography>
               </Grid>
             </Grid>
             <Box mt={5}></Box>
           </form>
         </div>
       </Grid>
-
-      <Typography variant="body2" color="textSecondary" align="center">
-        <Link color="inherit">
-          <img src={Instagram} alt="instagram" href="https://www.instagram.com/salokhiddeenov727/"/>
-          <img src={Facebook} alt="facebook" href="https://material-ui.com/" />
-          <img src={Google} alt="instagram" href="https://material-ui.com/" />
-          <img src={Twitter} alt="instagram" href="https://material-ui.com/" />
-        </Link>
-      </Typography>
     </Grid>
   );
 };
@@ -194,6 +212,7 @@ const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.token !== null,
     authRedirectPath: state.authRedirectPath,
+    loading: state.loading
   };
 };
 

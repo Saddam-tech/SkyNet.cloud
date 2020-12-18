@@ -12,7 +12,7 @@ class NotePad extends Component {
         elementType: "textarea",
         elementConfig: {
           type: "text",
-          placeholder: "Write your notes here!",
+          placeholder: "Type your notes here!",
         },
       },
       value: "",

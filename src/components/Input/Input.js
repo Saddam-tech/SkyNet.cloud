@@ -42,6 +42,24 @@ const input = (props) => {
         />
       );
       break;
+    case "textarea":
+      inputElement = (
+        <TextField
+          {...props.elementConfig}
+          value={props.value}
+          onChange={props.changed}
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          name="textarea"
+          label="Type your notes here"
+          type="textarea"
+          id="textarea"
+          autoComplete="textarea"
+        />
+      );
+      break;
     default:
       inputElement = (
         <TextField
@@ -54,7 +72,7 @@ const input = (props) => {
           fullWidth
           label="Email"
           name="Email"
-          autoComplete="password"
+          autoComplete="email"
           autoFocus
         />
       );
