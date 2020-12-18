@@ -1,11 +1,4 @@
-import React, { useState } from "react";
-// import styled from "styled-components";
-// import Background from "../../assets/background.png";
-// import GirlPicture from "../../assets/note-svg.svg";
-import Instagram from "../../assets/instagram.png";
-import Facebook from "../../assets/facebook.png";
-import Google from "../../assets/google.png";
-import Twitter from "../../assets/twitter.png";
+import React, { useState } from "react"; 
 import Input from "../../components/Input/Input";
 import { updateObject } from "../../shared/utility";
 import Spinner from "../../components/Spinner/Spinner";
@@ -175,27 +168,8 @@ const Layout = (props) => {
                   color="textSecondary"
                   align="center"
                 >
-                  <Link color="inherit">
-                    <img
-                      src={Instagram}
-                      alt="instagram"
-                      href="https://www.instagram.com/salokhiddeenov727/"
-                    />
-                    <img
-                      src={Facebook}
-                      alt="facebook"
-                      href="https://material-ui.com/"
-                    />
-                    <img
-                      src={Google}
-                      alt="instagram"
-                      href="https://material-ui.com/"
-                    />
-                    <img
-                      src={Twitter}
-                      alt="instagram"
-                      href="https://material-ui.com/"
-                    />
+                  <Link color="inherit" href='https://www.instagram.com/salokhiddeenov727/'>
+                     Contact me
                   </Link>
                 </Typography>
               </Grid>
