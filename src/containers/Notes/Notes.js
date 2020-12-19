@@ -5,8 +5,9 @@ import Toolbar from "../../components/Navigation/Toolbar";
 import { Route } from "react-router-dom";
 import NotePad from "../../containers/Notes/NotePad";
 import { Exit } from "@styled-icons/icomoon/";
-import {connect} from 'react-redux';
-import * as actions from '../../store/actions/actions';
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/actions";
+import AddBoxIcon from "@material-ui/icons/AddBox";
 
 class Notes extends Component {
   state = {
@@ -29,21 +30,21 @@ class Notes extends Component {
 
   goBackHandler = () => {
     this.props.onLogout();
-    this.props.history.push('/');
+    this.props.history.push("/");
   };
 
   addInputHandler = () => {
     this.props.history.replace("/notes/NotePad");
+    this.props.onFalse(); 
   };
 
   render() {
     return (
       <Container>
         <StyledExit onClick={this.goBackHandler} />
-        <Toolbar
-          click={this.sideDrawerOpenHandler}
-          gotoInput={this.addInputHandler}
-        />
+        <Toolbar click={this.sideDrawerOpenHandler} />
+
+        {this.props.plus ?  <AddBoxIcon onClick={this.addInputHandler} style={{height: '20%', width: '20%'}} /> : null}
 
         {this.state.showSideDrawer ? (
           <SideDrawer
@@ -55,12 +56,30 @@ class Notes extends Component {
 
         <Route
           path={this.props.match.path + "/NotePad"}
-          render={(props) => <NotePad />}
+          render={(props) => <NotePad {...props} />}
         />
       </Container>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    plus: state.plus,
+    loading: state.loading,
+  }
+}; 
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogout: () => dispatch(actions.authLogout()),
+    onFalse: () => dispatch(actions.minus()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Notes);
+
+
 
 const Container = styled.div`
   width: 100%;
@@ -90,11 +109,3 @@ const StyledExit = styled(Exit)`
     background: #ffffff;
   }
 `;
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onLogout: () => dispatch(actions.authLogout())
-  }
-}
-
-export default connect(null, mapDispatchToProps)(Notes);

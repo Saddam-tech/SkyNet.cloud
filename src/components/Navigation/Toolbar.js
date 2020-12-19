@@ -7,7 +7,6 @@ import classes from './Toolbar.module.css';
 const toolbar = (props) => (
     <header className={classes.Toolbar}>
         <Burger clicked={props.click} />
-        <button onClick={props.gotoInput}>+</button>
     </header>
 );
 

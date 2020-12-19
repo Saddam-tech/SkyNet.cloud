@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import Input from "../../components/Input/Input";
 import classes from "./NotePad.module.css";
-import Spinner from "../../components/Spinner/Spinner";
+import Spinner2 from "../../components/Spinner/Spinner2";
 import axios from "../../axios/axios";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/actions";
 
 class NotePad extends Component {
   state = {
@@ -34,18 +36,23 @@ class NotePad extends Component {
 
   orderHandler = (event) => {
     event.preventDefault();
-    this.setState({ loading: true });
+    this.props.loadingTrue();
+    this.props.onFalse();
     const formData = {};
     for (let formElementIdentifier in this.state.notesForm) {
-      formData[formElementIdentifier] = this.state.notesForm[formElementIdentifier].value;
+      formData[formElementIdentifier] = this.state.notesForm[
+        formElementIdentifier
+      ].value;
     }
 
     const inputData = {
-      userNote: formData
+      userNote: formData,
     };
 
-    axios.post("/inputData.json", inputData).then((response) => {
-      this.setState({ loading: false });
+    axios.post("/inputData.json", inputData)
+    .then((response) => {
+      this.props.loadingFalse();
+      this.props.onTrue();
       this.props.history.push("/notes");
       console.log("Data has been posted!");
     });
@@ -77,8 +84,8 @@ class NotePad extends Component {
       </form>
     );
 
-    if (this.state.loading) {
-      form = <Spinner />;
+    if (this.props.loading) {
+      form = <Spinner2 />;
     }
 
     return (
@@ -90,4 +97,23 @@ class NotePad extends Component {
   }
 }
 
-export default withRouter(NotePad);
+const mapStateToProps = (state) => {
+  return {
+    plus: state.plus,
+    loading: state.loading,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFalse: () => dispatch(actions.minus()),
+    onTrue: () => dispatch(actions.plus()),
+    loadingTrue: () => dispatch(actions.loadingTrue()),
+    loadingFalse: () => dispatch(actions.loadingFalse()),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(NotePad));

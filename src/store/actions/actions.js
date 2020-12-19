@@ -75,11 +75,35 @@ export const auth = (email, password, isSignup) => {
   };
 };
 
-const userIdReceiver = (userId) => {
+export const userIdReceiver = (userId) => {
   return {
     type: actionTypes.USER_ID_THRUST,
     userId: userId
   }
 }
+
+export const plus = () => {
+  return {
+    type: actionTypes.PLUS
+  }
+};
+
+export const minus = () => {
+  return {
+    type: actionTypes.MINUS
+  }
+};
+
+export const loadingTrue = () => {
+  return {
+    type: actionTypes.LOADINGTRUE
+  };
+};
+
+export const loadingFalse = () => {
+  return {
+    type: actionTypes.LOADINGFALSE
+  };
+};
 
  
