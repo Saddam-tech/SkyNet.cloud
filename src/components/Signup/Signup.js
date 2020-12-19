@@ -5,8 +5,6 @@ import Spinner from "../../components/Spinner/Spinner";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/actions";
-import { Redirect } from "react-router-dom";
-
 import Avatar from "@material-ui/core/Avatar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Link from "@material-ui/core/Link";
@@ -15,7 +13,8 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { Redirect } from 'react-router-dom';
+ 
 import Container from "@material-ui/core/Container";
 
 const Signup = (props) => {
@@ -76,12 +75,16 @@ const Signup = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     props.onAuth(authForm.email.value, authForm.password.value, isSignup);
+    setTimeout(() => {
+      props.history.push("/");
+    }, 100);
   };
+
 
   let authRedirectPath = null;
 
   if (props.isAuthenticated) {
-    authRedirectPath = <Redirect to="/" />;
+    authRedirectPath = <Redirect to='/notes' />;
   }
 
   // const loginHandler = () => {
@@ -152,7 +155,7 @@ const Signup = (props) => {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.userId !== null,
-    loading: state.loading, 
+    loading: state.loading,
   };
 };
 

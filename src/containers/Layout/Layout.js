@@ -82,7 +82,7 @@ const Layout = (props) => {
   let authRedirectPath = null;
 
   if (props.isAuthenticated) {
-    authRedirectPath = <Redirect to={props.authRedirectPath} />;
+    authRedirectPath = <Redirect to='/notes' />;
   }
 
   // const loginHandler = () => {
@@ -91,7 +91,7 @@ const Layout = (props) => {
 
   const useStyles = makeStyles((theme) => ({
     root: {
-      height: "130vh",
+      height: "100vh",
     },
     image: {
       backgroundImage: "url(https://source.unsplash.com/random)",
@@ -185,7 +185,6 @@ const Layout = (props) => {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.token !== null,
-    authRedirectPath: state.authRedirectPath,
     loading: state.loading
   };
 };

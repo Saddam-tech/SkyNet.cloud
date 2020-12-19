@@ -63,9 +63,10 @@ export const auth = (email, password, isSignup) => {
         console.log(response);
         localStorage.setItem('token', response.data.idToken);
         localStorage.setItem('userId', response.data.localId);
-        localStorage.setItem('expirationDate', expirationDate)
-        dispatch(authSuccess(response.data.idToken, response.data.localId));
-        dispatch(checkAuthTimeout(response.data.expiresIn))
+        localStorage.setItem('expirationDate', expirationDate);
+        dispatch(authSuccess(response.data.idToken));
+        dispatch(userIdReceiver(response.data.localId))
+        dispatch(checkAuthTimeout(response.data.expiresIn));
       })
       .catch((err) => {
         console.log(err);
@@ -73,3 +74,12 @@ export const auth = (email, password, isSignup) => {
       });
   };
 };
+
+const userIdReceiver = (userId) => {
+  return {
+    type: actionTypes.USER_ID_THRUST,
+    userId: userId
+  }
+}
+
+ 

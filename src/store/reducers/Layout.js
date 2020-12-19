@@ -5,18 +5,20 @@ const initialState = {
     token: null,
     userId: null,
     loading: false,
-    error: null,
-    authRedirectPath: '/notes', 
+    error: null, 
 };
 
 const authStart = (state, action) => {
     return updateObject(state, {loading: true, error: null})
 }
 
+const userIdThrust = (state, action) => {
+    return updateObject(state, {userId: action.userId})
+}
+
 const authSuccess = (state, action) => {
     return updateObject(state, {
         token: action.idToken,
-        userId: action.userId,
         loading: false,
         error: null, 
     })
@@ -36,6 +38,7 @@ const rootReducer = (state = initialState, action) => {
         case actionTypes.AUTH_SUCCESS: return authSuccess(state, action);
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
         case actionTypes.AUTH_FAIL: return authFail(state, action);
+        case actionTypes.USER_ID_THRUST: return userIdThrust(state, action)
         default: 
             return state;
         
