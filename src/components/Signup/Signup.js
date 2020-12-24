@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Input from "../../components/Input/Input";
-import { updateObject } from "../../shared/utility";
+import { updateObject } from "../../util/utility";
 import Spinner from "../../components/Spinner/Spinner";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";

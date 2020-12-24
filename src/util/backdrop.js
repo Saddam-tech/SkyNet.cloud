@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const backDrop = (props) =>
-  props.show ? <BackdropCss onClick={props.closing} /> : null;
+export const BackDrop = (props) => props.show ? <Backdrop onClick={props.closing} /> : null;
 
-const BackdropCss = styled.div`
+const Backdrop = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
@@ -13,5 +12,3 @@ const BackdropCss = styled.div`
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
 `;
-
-export default backDrop;

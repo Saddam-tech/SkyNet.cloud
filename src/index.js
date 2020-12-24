@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
-import * as serviceWorker from "./serviceWorker";
+import rootReducer from "./store/reducers/Layout";
+import thunk from "redux-thunk";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
-import rootReducer from "./store/reducers/Layout";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
+import "./index.css";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
@@ -22,5 +21,3 @@ const app = (
 );
 
 ReactDOM.render(app, document.getElementById("root"));
-
- 

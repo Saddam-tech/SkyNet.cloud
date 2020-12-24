@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Input from "../../components/Input/Input";
 import classes from "./NotePad.module.css";
 import Spinner2 from "../../components/Spinner/Spinner2";
-import axios from "../../axios/axios";
+import axios from "../../util/axios";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/actions";

@@ -1,7 +1,7 @@
 import React from "react"; 
-import Layout from "./containers/Layout/Layout";
+import Layout from "./components/Layout/Layout";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
-import Notes from "./containers/Notes/Notes";
+import Notes from "./components/Notes/Notes";
 import { connect } from 'react-redux';
 import * as actions from './store/actions/actions';
 import Signup from './components/Signup/Signup';

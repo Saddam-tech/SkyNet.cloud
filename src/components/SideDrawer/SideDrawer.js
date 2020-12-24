@@ -1,10 +1,8 @@
-import React, { useState, useEffect, Component, Fragment } from "react";
-import axios from "../../axios/axios";
-import classes from "./SideDrawer.module.css";
+import React, { useState, useEffect, Fragment } from "react";
+import axios from "../../util/axios";
 import styled from "styled-components";
-//import { withRouter } from "react-router-dom";
-import BackDrop from "../BackDrop/BackDrop";
-import { FetchedNote } from "../../containers/FetchedNotes/FetchedNote";
+import { BackDrop } from "../../util/backdrop";
+import { FetchedNote } from "../FetchedNotes/FetchedNote";
 import Spinner2 from "../Spinner/Spinner2";
 import { Exit } from "@styled-icons/icomoon/";
 
@@ -12,9 +10,9 @@ const SideDrawer = (props) => {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
   useEffect(() => {
     setLoading(true);
+    console.log("done");
 
     axios.get("/inputData.json").then((res) => {
       let data = [];
@@ -26,26 +24,15 @@ const SideDrawer = (props) => {
       setNotes(data);
       setLoading(false);
     })
-  }, [])
+  }, [props.open]);
 
-  let attachedClasses = [classes.SideDrawer, classes.Close];
-
-  if (props.openState) {
-    attachedClasses = [classes.SideDrawer, classes.Open];
-  }
-
-  console.log(notes);
 
   return (
     <Fragment>
-      <BackDrop show={props.openState} closing={props.closed} />
-
-      <div className={attachedClasses.join(" ")}>
-        <Input placeholder="Search" />
-
+      <BackDrop show={props.open} closing={props.closed} />
+      <Container open={props.open}>
         <StyledExit onClick={props.goBackButton} />
-
-        <div className={classes.FetchedNotes}>
+        <div className="FetchedNotes">
           {
             loading ?
               <Spinner2 />
@@ -57,11 +44,39 @@ const SideDrawer = (props) => {
               </div>
           }
         </div>
-      </div>
+      </Container>
     </Fragment>
   );
 }
 
+
+const Container = styled.div`
+    position: fixed;
+    width: 500px;
+    max-width: 70%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: 500; 
+    background:  #b1b1b1;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-out;
+    transform: ${(props) => (props.open ? "translateX(0)" : "translateX(100%)")};
+
+    .FetchedNotes {
+      width: 90%;
+      height: 60%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-flow: column;
+      padding: 0;
+      margin: 10px;
+      margin-top: 110px;
+      text-align: center;
+      overflow: auto;   
+    }
+`;
 
 const Input = styled.input`
   position: absolute;
