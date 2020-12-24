@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import Input from "../Input/Input";
 import { updateObject } from "../../util/utility";
 import Spinner from "../Spinner/Spinner";
@@ -20,12 +20,16 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 const Layout = (props) => {
-  const [isSignup, setIsSignup] = useState(false); 
+  const [isSignup, setIsSignup] = useState(false);
   const [authForm, setAuthForm] = useState({
     email: {
       elementType: "input",
       elementConfig: {
         type: "email",
+        id: "email",
+        label: "Email Address",
+        name: "email",
+        autoComplete: "email",
       },
       value: "",
     },
@@ -33,6 +37,10 @@ const Layout = (props) => {
       elementType: "password",
       elementConfig: {
         type: "password",
+        id: "password",
+        label: "password",
+        name: "password",
+        autoComplete: "password",
       },
       value: "",
     },
@@ -82,7 +90,7 @@ const Layout = (props) => {
   let authRedirectPath = null;
 
   if (props.isAuthenticated) {
-    authRedirectPath = <Redirect to='/notes' />;
+    authRedirectPath = <Redirect to="/notes" />;
   }
 
   // const loginHandler = () => {
@@ -155,12 +163,14 @@ const Layout = (props) => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link variant="body2">
-                  Forgot password?
-                </Link>
+                <Link variant="body2">Forgot password?</Link>
               </Grid>
               <Grid item>
-                <Link href='/Signup'  variant="body2" onClick={switchAuthModeHandler}>
+                <Link
+                  href="/Signup"
+                  variant="body2"
+                  onClick={switchAuthModeHandler}
+                >
                   {"Don't have an account? Sign Up"}
                 </Link>
                 <Typography
@@ -168,8 +178,11 @@ const Layout = (props) => {
                   color="textSecondary"
                   align="center"
                 >
-                  <Link color="inherit" href='https://www.instagram.com/salokhiddeenov727/'>
-                     Contact me
+                  <Link
+                    color="inherit"
+                    href="https://www.instagram.com/salokhiddeenov727/"
+                  >
+                    Contact me
                   </Link>
                 </Typography>
               </Grid>
@@ -185,7 +198,7 @@ const Layout = (props) => {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.token !== null,
-    loading: state.loading
+    loading: state.loading,
   };
 };
 

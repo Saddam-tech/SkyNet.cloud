@@ -15,9 +15,12 @@ class NotePad extends Component {
         elementConfig: {
           type: "text",
           placeholder: "Type your notes here!",
+          name: "textarea",
+          label: "Type your notes here",
+          id: "textarea",
+          autoComplete: "textarea",
         },
       },
-      value: "",
     },
     loading: false,
   };
@@ -49,8 +52,7 @@ class NotePad extends Component {
       userNote: formData,
     };
 
-    axios.post("/inputData.json", inputData)
-    .then((response) => {
+    axios.post("/inputData.json", inputData).then((response) => {
       this.props.loadingFalse();
       this.props.onTrue();
       this.props.history.push("/notes");

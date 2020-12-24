@@ -16,10 +16,6 @@ const input = (props) => {
           margin="normal"
           required
           fullWidth
-          id="email"
-          label="Email Address"
-          name="email"
-          autoComplete="email"
           autoFocus
         />
       );
@@ -34,11 +30,6 @@ const input = (props) => {
           margin="normal"
           required
           fullWidth
-          name="password"
-          label="Password"
-          type="password"
-          id="password"
-          autoComplete="current-password"
         />
       );
       break;
@@ -52,11 +43,7 @@ const input = (props) => {
           margin="normal"
           required
           fullWidth
-          name="textarea"
-          label="Type your notes here"
-          type="textarea"
-          id="textarea"
-          autoComplete="textarea"
+           
         />
       );
       break;
@@ -70,10 +57,6 @@ const input = (props) => {
           margin="normal"
           required
           fullWidth
-          label="Email"
-          name="Email"
-          autoComplete="email"
-          autoFocus
         />
       );
   }
