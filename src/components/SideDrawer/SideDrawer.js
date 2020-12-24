@@ -1,79 +1,67 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, Component, Fragment } from "react";
 import axios from "../../axios/axios";
 import classes from "./SideDrawer.module.css";
 import styled from "styled-components";
 //import { withRouter } from "react-router-dom";
 import BackDrop from "../BackDrop/BackDrop";
-import Aux from "../../containers/hoc/Aux/Aux";
-import FetchedNote from "../../containers/FetchedNotes/FetchedNote";
+import { FetchedNote } from "../../containers/FetchedNotes/FetchedNote";
 import Spinner2 from "../Spinner/Spinner2";
 import { Exit } from "@styled-icons/icomoon/";
 
-class SideDrawer extends Component {
-  state = {
-    notes: [],
-    loading: true,
-    notesLoaded: true
-  };
+const SideDrawer = (props) => {
+  const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  componentDidMount() {
-      axios
-      .get("/inputData.json")
-      .then((res) => {
-        const fetchedNotes = [];
-        for (let key in res.data) {
-          fetchedNotes.push({
-            ...res.data[key],
-            id: key,
-          });
-        }
 
-        this.setState({
-          notesLoaded: false,
-          loading: false,
-          notes: fetchedNotes,
-        });
+  useEffect(() => {
+    setLoading(true);
 
-        console.log("Data has been fetched!");
-      });
-    }
-  
- 
+    axios.get("/inputData.json").then((res) => {
+      let data = [];
 
-  render() {
-    let attachedClasses = [classes.SideDrawer, classes.Close];
+      for (let key in res.data) {
+        data.push({ ...res.data[key], id: key })
+      }
 
-    if (this.props.openState) {
-      attachedClasses = [classes.SideDrawer, classes.Open];
-    }
+      setNotes(data);
+      setLoading(false);
+    })
+  }, [])
 
-    let fetchedNotes = (
-      <div>
-        {this.state.notes.map((anote) => (
-          <FetchedNote key={anote.id} notes={anote.userNote} />
-        ))}
-      </div>
-    );
+  let attachedClasses = [classes.SideDrawer, classes.Close];
 
-    if (this.state.loading) {
-      fetchedNotes = <Spinner2 />;
-    }
-
-    return (
-      <Aux>
-        <BackDrop show={this.props.openState} closing={this.props.closed} />
-
-        <div className={attachedClasses.join(" ")}>
-          <Input placeholder="Search" />
-
-          <StyledExit onClick={this.props.goBackButton} />
-
-          <div className={classes.FetchedNotes}>{fetchedNotes}</div>
-        </div>
-      </Aux>
-    );
+  if (props.openState) {
+    attachedClasses = [classes.SideDrawer, classes.Open];
   }
+
+  console.log(notes);
+
+  return (
+    <Fragment>
+      <BackDrop show={props.openState} closing={props.closed} />
+
+      <div className={attachedClasses.join(" ")}>
+        <Input placeholder="Search" />
+
+        <StyledExit onClick={props.goBackButton} />
+
+        <div className={classes.FetchedNotes}>
+          {
+            loading ?
+              <Spinner2 />
+              :
+              <div>
+                {
+                  notes.map(note => <FetchedNote key={note.id} id={note.id} note={note.userNote.note} />)
+                }
+              </div>
+          }
+        </div>
+      </div>
+    </Fragment>
+  );
 }
+
 
 const Input = styled.input`
   position: absolute;

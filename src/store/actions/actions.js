@@ -60,7 +60,6 @@ export const auth = (email, password, isSignup) => {
       .post(url, authData)
       .then((response) => {
         const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
-        console.log(response);
         localStorage.setItem('token', response.data.idToken);
         localStorage.setItem('userId', response.data.localId);
         localStorage.setItem('expirationDate', expirationDate);

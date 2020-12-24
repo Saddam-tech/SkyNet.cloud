@@ -1,38 +1,22 @@
 import React from 'react';
-import classes from './FetchedNote.module.css';
+import styled from "styled-components";
 
-const fetchedNote = (props) => {
+export const FetchedNote = (props) => <Wrapper key={props.id}> {props.note} </Wrapper>
 
-    const fetchedData = [];
+const Wrapper = styled.div`
+    width: 80%;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #9f9f9f, #bdbdbd);
+    box-shadow: 20px 20px 60px #969696, -20px -20px 60px #cccccc;
+    padding: 10px;
+    margin: 10px auto;
+    box-sizing: border-box;
+    cursor: pointer;
 
-    for (let NoteData in props.notes) {
-        fetchedData.push({
-            name: NoteData,
-            value: props.notes[NoteData]
-        })
-    };
-
-    const NotesOutPut = fetchedData.map((notess) => {
-        return(
-            <span 
-            key={notess.name}
-            style={{
-                textTransform: "capitalize",
-                display: 'inline-block',
-                margin: '0 8px',
-                padding: '5px'
-            }}>
-                {notess.name}: {notess.value}
-            </span>
-        )
-    } )
-
-
-    return(
-        <div className={classes.FetchedNote}>
-            {NotesOutPut}
-        </div>
-    );
-}
-
-export default fetchedNote;
+    
+    :hover {
+        background-color: #f88686;
+        border: 4px solid #40A4C8;
+        color: white;
+    }
+`;
