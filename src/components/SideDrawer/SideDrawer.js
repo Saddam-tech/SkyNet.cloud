@@ -52,6 +52,11 @@ const SideDrawer = (props) => {
     </Fragment>
   );
 }
+ 
+
+export default SideDrawer;
+
+
 
 
 const Container = styled.div`
@@ -66,42 +71,6 @@ const Container = styled.div`
     box-sizing: border-box;
     transition: transform 0.3s ease-out;
     transform: ${(props) => (props.open ? "translateX(0)" : "translateX(100%)")};
-`;
-
-const Input = styled.input`
-  position: absolute;
-  width: 441px;
-  height: 61px;
-  left: 23px;
-  top: 30px;
-  text-align: center;
-  font-size: 25px;
-
-  background: #faf4ff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  @media (max-width: 500px) {
-    width: 184px;
-    height: 36px;
-    left: 17px;
-    top: 25px;
-  }
-  ::placeholder {
-    text-align: center;
-    position: absolute;
-    width: 290px;
-    height: 47px;
-    left: 73px;
-    top: 42px;
-
-    font-family: Angkor;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-    line-height: 37px;
-
-    color: #9b9b9b;
-  }
 `;
 
 const StyledExit = styled(Exit)`
@@ -121,5 +90,3 @@ const StyledExit = styled(Exit)`
     background: #ffffff;
   }
 `;
-
-export default SideDrawer;
