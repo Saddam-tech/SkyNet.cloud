@@ -12,7 +12,6 @@ const SideDrawer = (props) => {
 
   useEffect(() => {
     setLoading(true);
-    console.log("done");
 
     axios.get("/inputData.json").then((res) => {
       let data = [];
@@ -26,20 +25,29 @@ const SideDrawer = (props) => {
     })
   }, [props.open]);
 
+  const removeNote = (id) => {
+    setNotes(notes.filter(note => note.id !== id));
+  }
 
   return (
     <Fragment>
       <BackDrop show={props.open} closing={props.closed} />
       <Container open={props.open}>
         <StyledExit onClick={props.goBackButton} />
-        <div className="FetchedNotes">
-          {
-            loading ?
-              <Spinner2 />
-              :
-              notes.map(note => <FetchedNote key={note.id} id={note.id} note={note.userNote.note} />)
-          }
-        </div>
+
+        {
+          loading ?
+            <Spinner2 />
+            :
+            notes.map(note => <FetchedNote
+              key={note.id}
+              id={note.id}
+              note={note.userNote.note}
+              removeNote={removeNote}
+            />
+            )
+        }
+
       </Container>
     </Fragment>
   );
@@ -58,20 +66,6 @@ const Container = styled.div`
     box-sizing: border-box;
     transition: transform 0.3s ease-out;
     transform: ${(props) => (props.open ? "translateX(0)" : "translateX(100%)")};
-
-    .FetchedNotes {
-      width: 90%;
-      height: 60%;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      flex-flow: column;
-      padding: 0;
-      margin: 10px;
-      margin-top: 110px;
-      text-align: center;
-      overflow: auto;   
-    }
 `;
 
 const Input = styled.input`
