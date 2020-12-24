@@ -37,11 +37,7 @@ const SideDrawer = (props) => {
             loading ?
               <Spinner2 />
               :
-              <div>
-                {
-                  notes.map(note => <FetchedNote key={note.id} id={note.id} note={note.userNote.note} />)
-                }
-              </div>
+              notes.map(note => <FetchedNote key={note.id} id={note.id} note={note.userNote.note} />)
           }
         </div>
       </Container>
@@ -58,7 +54,7 @@ const Container = styled.div`
     top: 0;
     right: 0;
     z-index: 500; 
-    background:  #b1b1b1;
+    background:  #f3f3f3;
     box-sizing: border-box;
     transition: transform 0.3s ease-out;
     transform: ${(props) => (props.open ? "translateX(0)" : "translateX(100%)")};
