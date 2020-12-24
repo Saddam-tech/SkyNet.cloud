@@ -27,7 +27,7 @@ const Layout = (props) => {
       elementConfig: {
         type: "email",
         id: "email",
-        label: "Email Address",
+        label: "Email",
         name: "email",
         autoComplete: "email",
       },

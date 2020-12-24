@@ -37,8 +37,10 @@ const Wrapper = styled.div`
   padding: 10px;
   margin: 10px auto;
   box-sizing: border-box;
+  overflow: auto;
   cursor: pointer;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);

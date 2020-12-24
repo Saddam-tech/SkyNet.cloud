@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "../../components/Input/Input";
 import { updateObject } from "../../util/utility";
 import Spinner from "../../components/Spinner/Spinner";
@@ -24,6 +24,10 @@ const Signup = (props) => {
       elementType: "input",
       elementConfig: {
         type: "email",
+        id: "email",
+        label: "Create an email",
+        name: "email",
+        autoComplete: "email",
       },
       value: "",
     },
@@ -31,6 +35,10 @@ const Signup = (props) => {
       elementType: "password",
       elementConfig: {
         type: "password",
+        id: "password",
+        label: "Create password",
+        name: "password",
+        autoComplete: "password",
       },
       value: "",
     },
@@ -53,6 +61,12 @@ const Signup = (props) => {
       config: authForm[key],
     });
   }
+
+  useEffect(() => {
+    console.log(formElementsArray)
+  }, []);
+
+
 
   const switchAuthModeHandler = (prevState) => {
     setIsSignup(!isSignup);
