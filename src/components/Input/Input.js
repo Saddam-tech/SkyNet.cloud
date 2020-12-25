@@ -30,6 +30,7 @@ const input = (props) => {
           margin="normal"
           required
           fullWidth
+          autoFocus
         />
       );
       break;
@@ -43,6 +44,7 @@ const input = (props) => {
           margin="normal"
           required
           fullWidth
+          autoFocus
            
         />
       );
