@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Input from "../../components/Input/Input";
 import { updateObject } from "../../util/utility";
 import Spinner from "../../components/Spinner/Spinner";
@@ -61,10 +61,6 @@ const Signup = (props) => {
       config: authForm[key],
     });
   }
-
-  useEffect(() => {
-    console.log(formElementsArray)
-  }, []);
 
 
 
