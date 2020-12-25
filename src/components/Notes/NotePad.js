@@ -6,6 +6,7 @@ import axios from "../../util/axios";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/actions";
+import Bounce from 'react-reveal/Bounce';
 
 class NotePad extends Component {
   state = {
@@ -91,10 +92,12 @@ class NotePad extends Component {
     }
 
     return (
+      <Bounce>
       <div className={classes.NotePad}>
         <h4>Enter your notes!</h4>
         {form}
       </div>
+      </Bounce>
     );
   }
 }

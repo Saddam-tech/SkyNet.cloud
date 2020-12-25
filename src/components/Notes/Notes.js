@@ -7,7 +7,7 @@ import NotePad from "./NotePad";
 import { Exit } from "@styled-icons/icomoon/";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/actions";
-import AddBoxIcon from "@material-ui/icons/AddBox";
+import AddBoxIcon from "@material-ui/icons/AddBox"; 
 
 const Notes = (props) => {
   const [showSideDrawer, setShowSideDrawer] = useState(false);
