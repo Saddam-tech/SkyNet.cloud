@@ -7,8 +7,7 @@ import NotePad from "./NotePad";
 import { Exit } from "@styled-icons/icomoon/";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/actions";
-import AddBoxIcon from "@material-ui/icons/AddBox";
-import Bounce from 'react-reveal/Bounce';
+import AddBoxIcon from "@material-ui/icons/AddBox"; 
 
 const Notes = (props) => {
   const [showSideDrawer, setShowSideDrawer] = useState(false);
@@ -32,7 +31,12 @@ const Notes = (props) => {
       <StyledExit onClick={goBackHandler} />
       <Toolbar click={sideDrawerHandler} />
 
-      {props.plus ? <Bounce><AddBoxIcon onClick={addInputHandler} style={{ height: '60%', width: '60%' }} /> </Bounce>: null} 
+      {props.plus ? (
+        <AddBoxIcon
+          onClick={addInputHandler}
+          style={{ height: "20%", width: "20%" }}
+        />
+      ) : null}
 
       <SideDrawer
         goBackButton={goBackHandler}
@@ -46,13 +50,13 @@ const Notes = (props) => {
       />
     </Container>
   );
-}
+};
 
 const mapStateToProps = (state) => {
   return {
     plus: state.plus,
     loading: state.loading,
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -63,8 +67,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Notes));
-
-
 
 const Container = styled.div`
   width: 100%;
